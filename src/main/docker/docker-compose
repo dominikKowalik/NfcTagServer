@@ -1,0 +1,20 @@
+version: '2'
+services:
+
+  web:
+      image: kowalikdominik/nfctagserver:latest
+      ports:
+          - 8080:8080
+      depends_on:
+          - postgres
+
+  postgres:
+          container_name: postgres_db
+          image: postgres:9.5
+          environment:
+              - POSTGRES_PASSWORD=xxx
+              - POSTGRES_USER=xxx
+              - POSTGRES_DB=nfctagserver
+              - PGDATA=/var/lib/postgresql/data/pgdata
+          ports:
+              - 5432:5432
